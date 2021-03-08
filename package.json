@@ -1,0 +1,40 @@
+{
+  "name": "products-api",
+  "version": "1.0.0",
+  "homepage": "https://github.com/fernancumez/products-api#readme",
+  "description": "Graphql api to save and list products",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "watch": "npm run clean && tsc -w",
+    "start": "export NODE_ENV=production || SET NODE_ENV=production&& npm run build && node dist/index.js",
+    "dev": "export NODE_ENV=development || SET NODE_ENV=development&& nodemon dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernancumez/products-api.git"
+  },
+  "keywords": [],
+  "author": "fernancumez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernancumez/products-api/issues"
+  },
+  "dependencies": {
+    "apollo-server-express": "2.21.1",
+    "express": "4.17.1",
+    "mysql": "2.18.1",
+    "reflect-metadata": "0.1.13",
+    "type-graphql": "1.1.1",
+    "typeorm": "0.2.31"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.11",
+    "@types/node": "14.14.32",
+    "nodemon": "2.0.7",
+    "rimraf": "3.0.2",
+    "ts-node": "9.1.1",
+    "typescript": "4.2.3"
+  }
+}
