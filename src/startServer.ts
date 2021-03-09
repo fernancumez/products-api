@@ -3,13 +3,13 @@ import express, { Express } from "express";
 import { ApolloServer } from "apollo-server-express";
 import { PingResolver } from "./resolvers/ping";
 import { buildSchema } from "type-graphql";
+import { createTypeormConn } from "./utils/createTypeormConn";
+import config from "./config";
 
 export const startServer = async () => {
   const app: Express = express();
 
-  const PORT: number = 3000;
-
-  app.set("port", PORT);
+  app.set("port", parseInt(config.PORT));
 
   const server = new ApolloServer({
     schema: await buildSchema({
@@ -19,7 +19,12 @@ export const startServer = async () => {
 
   server.applyMiddleware({ app, path: "/graphql" });
 
-  app.listen(app.get("port"));
-  console.log(`Server on port ${app.get("port")}`);
+  await createTypeormConn().then(() => {
+    console.log("Database is connected!");
+  });
+
+  app.listen(app.get("port"), () => {
+    console.log(`Server on port ${app.get("port")}`);
+  });
   return app;
 };

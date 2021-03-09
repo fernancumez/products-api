@@ -1,0 +1,16 @@
+[
+  {
+    "name": "production",
+    "type": "mysql",
+    "synchronize": true,
+    "logging": true
+  },
+  {
+    "name": "development",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "synchronize": true,
+    "logging": false
+  }
+]
